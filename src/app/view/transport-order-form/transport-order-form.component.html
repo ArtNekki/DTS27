@@ -1,50 +1,55 @@
 <form class="form u-full-height" autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-step u-full-height" [@stepOne]="currentStep">
+<!--  <div class="form-step u-full-height" [@stepOne]="currentStep">-->
+<!--    <div *ngIf="transportId; else empty" class="u-full-height">-->
+<!--      <div *ngIf="transportModels && transportModels.length" class="u-full-height">-->
+<!--        <div class="form-field">-->
+<!--          <label class="form-label">Модель:</label>-->
+<!--          <app-select id="models" [items]="transportModels" formControlName="model" (change)="onChangeParam($event)"></app-select>-->
+<!--        </div>-->
+<!--        <div *ngIf="transportProps" class="form-field">-->
+<!--          <div class="form-label">Характеристики:</div>-->
+<!--          <table class="table">-->
+<!--            <tr *ngFor="let prop of transportProps">-->
+<!--              <td>{{prop.name}}</td>-->
+<!--              <td>{{prop.value}}</td>-->
+<!--            </tr>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--        <app-loader *ngIf="isTransportPropsLoading" class="loader&#45;&#45;sm loader&#45;&#45;invert"></app-loader>-->
+<!--        <div class="form-group form-group&#45;&#45;buttons">-->
+<!--          <button type="button" class="btn btn&#45;&#45;sm btn&#45;&#45;prev btn&#45;&#45;dark u-hide-sm" [disabled]="" (click)="this.onChange.emit()">Вся техника</button>-->
+<!--          <button type="button" class="btn btn&#45;&#45;sm btn&#45;&#45;next u-mgl-auto" [disabled]="" (click)="goToStep(FormStep.TWO)">Дальше</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <ng-template #empty>-->
+<!--      <div>Транспорт не выбран...</div>-->
+<!--    </ng-template>-->
+<!--  </div>-->
+  <div class="form-step u-full-height" formGroupName="rent" [@stepOne]="currentStep">
     <div *ngIf="transportId; else empty" class="u-full-height">
-      <div *ngIf="transportModels && transportModels.length" class="u-full-height">
-        <div class="form-field">
-          <label class="form-label">Модель:</label>
-          <app-select id="models" [items]="transportModels" formControlName="model" (change)="onChangeParam($event)"></app-select>
-        </div>
-        <div *ngIf="transportProps" class="form-field">
-          <div class="form-label">Характеристики:</div>
-          <table class="table">
-            <tr *ngFor="let prop of transportProps">
-              <td>{{prop.name}}</td>
-              <td>{{prop.value}}</td>
-            </tr>
-          </table>
-        </div>
-        <app-loader *ngIf="isTransportPropsLoading" class="loader--sm loader--invert"></app-loader>
-        <div class="form-group form-group--buttons">
-          <button type="button" class="btn btn--sm btn--prev btn--dark u-hide-sm" [disabled]="" (click)="this.onChange.emit()">Вся техника</button>
-          <button type="button" class="btn btn--sm btn--next u-mgl-auto" [disabled]="" (click)="goToStep(FormStep.TWO)">Дальше</button>
-        </div>
+      <div class="form-field">
+        <label class="form-label">Когда нужна техника?</label>
+        <app-datepicker id="date" name="date" formControlName="date"></app-datepicker>
+      </div>
+      <div class="form-field">
+        <label class="form-label">На какой период?</label>
+        <app-select id="period" [items]="[{ value: '', name: 'Не выбрано' }, { value: '1', name: '1 час' }, { value: '2-4', name: '2 - 4 часа' }, { value: '4-8', name: '4 - 8 часа' }, { value: 'more', name: '8 часов и более' }]" formControlName="period"></app-select>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="location">Куда доставить?</label>
+        <textarea id="location" class="input" formControlName="location" cols="30" rows="5"></textarea>
+      </div>
+      <div class="form-group form-group--buttons">
+        <button type="button" class="btn btn--sm btn--prev btn--dark" (click)="this.onChange.emit()">Вся техника</button>
+        <button type="submit" class="btn btn--sm btn--next" (click)="goToStep(FormStep.TWO)">Дальше</button>
       </div>
     </div>
     <ng-template #empty>
       <div>Транспорт не выбран...</div>
     </ng-template>
   </div>
-  <div class="form-step u-full-height" formGroupName="rent" [@stepTwo]="currentStep">
-    <div class="form-field">
-      <label class="form-label">Когда нужна техника?</label>
-      <app-datepicker id="date" name="date" formControlName="date"></app-datepicker>
-    </div>
-    <div class="form-field">
-      <label class="form-label">На какой период?</label>
-      <app-select id="period" [items]="[{ value: '', name: 'Не выбрано' }, { value: '1', name: '1 час' }, { value: '2-4', name: '2 - 4 часа' }, { value: '4-8', name: '4 - 8 часа' }, { value: 'more', name: '8 часов и более' }]" formControlName="period"></app-select>
-    </div>
-    <div class="form-field">
-      <label class="form-label" for="location">Куда доставить?</label>
-      <textarea id="location" class="input" formControlName="location" cols="30" rows="5"></textarea>
-    </div>
-    <div class="form-group form-group--buttons">
-      <button type="button" class="btn btn--sm btn--prev btn--dark" (click)="goToStep(FormStep.ONE)">Назад</button>
-      <button type="submit" class="btn btn--sm btn--next" (click)="goToStep(FormStep.THREE)">Дальше</button>
-    </div>
-  </div>
-  <div class="form-step u-full-height" [@stepThree]="currentStep">
+  <div class="form-step u-full-height" [@stepTwo]="currentStep">
     <!--    <div>Персональная информация:</div>-->
     <!--    <button class="form-btn" (click)="stepTwo = false">Назад</button>-->
     <div class="form-group form-group--right u-mgb-md">
@@ -101,7 +106,7 @@
       </div>
     </div>
     <div class="form-group form-group--buttons">
-      <button type="button" class="btn btn--sm btn--prev btn--dark" (click)="goToStep(FormStep.TWO)">Назад</button>
+      <button type="button" class="btn btn--sm btn--prev btn--dark" (click)="goToStep(FormStep.ONE)">Назад</button>
       <button type="submit" class="btn btn--sm btn--success" [disabled]="form.invalid">Отправить</button>
     </div>
     <app-loader *ngIf="formSubmitState === SubmitState.SENDING" class="loader--absolute loader--invert"></app-loader>

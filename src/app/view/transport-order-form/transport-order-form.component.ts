@@ -111,19 +111,27 @@ export class TransportOrderFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.currentStep = this.FormStep.ONE;
+    this.currentTransport = null;
 
     if (changes.transportId.currentValue) {
       this.formSubmitState = null;
+      this.currentTransport = changes.transportId.currentValue;
+      this.form.reset();
 
-      this.transportService.getById('transport', changes.transportId.currentValue)
-        .subscribe((data: TransportItem) => {
-            this.currentTransport = changes.transportId.currentValue;
+      // setTimeout(() => {
+      //
+      // }, 100);
 
-            if (data.models.length) {
-              this.transportModels = [{value: '', name: 'Не выбрано'}, ...data.models];
-              this.form.addControl('model', new FormControl('', Validators.required));
-            }
-        });
+      // this.transportService.getById('transport', changes.transportId.currentValue)
+      //   .subscribe((data: TransportItem) => {
+      //       this.currentTransport = changes.transportId.currentValue;
+      //       console.log('currentTransport', this.currentTransport);
+      //
+      //       if (data.models.length) {
+      //         this.transportModels = [{value: '', name: 'Не выбрано'}, ...data.models];
+      //         this.form.addControl('model', new FormControl('', Validators.required));
+      //       }
+      //   });
     }
 
     if (!changes.transportId.firstChange) {
@@ -148,11 +156,11 @@ export class TransportOrderFormComponent implements OnInit, OnChanges {
   onSubmit() {
     if (!this.form.valid) { return; }
 
-    const model = this.transportModels.filter((item) => {
-      return item.value === this.form.value.model;
-    })[0].name;
+    // const model = this.transportModels.filter((item) => {
+    //   return item.value === this.form.value.model;
+    // })[0].name;
 
-    const formData = { date: new Date(), ...this.form.value, model, transport: this.currentTransport};
+    const formData = { date: new Date(), ...this.form.value, transport: this.currentTransport};
     console.log(formData);
 
     this.formSubmitState = this.SubmitState.SENDING;

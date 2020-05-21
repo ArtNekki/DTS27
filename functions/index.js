@@ -52,7 +52,7 @@ const renderPersonalData = function(data) {
   </tr>
   <tr>
     <td>Телефон: </td>
-    <td><b>${data.personal.tel | 'не заполнено'}</b></td>
+    <td><b>${data.personal.tel ? JSON.stringify(data.personal.tel) : 'не заполнено'}</b></td>
   </tr>
  </table>
   <h3>Сообщение:</h3>
@@ -116,10 +116,6 @@ const renderTransportData = function(data) {
   return `
    <h3>Данные по аренде:</h3>
    <table border="0" cellpadding="0" cellspacing="0" width="300">
-   <tr>
-      <td>Модель:</td>
-      <td><b>${data.model || 'не заполнено'}</b></td>
-    </tr>
      <tr>
       <td>Дата предоставления:</td>
       <td><b>${data.rent.date || 'не заполнено'}</b></td>
@@ -216,7 +212,7 @@ exports.sendTransportEmail = functions
             </head>
             <body>
            	  <!-- Email content goes here -->
-              ${data.model && renderTransportData(data)}
+              ${renderTransportData(data)}
               ${renderPersonalData(data)}
             </body>
           </html>
