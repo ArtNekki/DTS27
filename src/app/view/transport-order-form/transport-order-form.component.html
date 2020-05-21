@@ -41,8 +41,8 @@
         <textarea id="location" class="input" formControlName="location" cols="30" rows="5"></textarea>
       </div>
       <div class="form-group form-group--buttons">
-        <button type="button" class="btn btn--sm btn--prev btn--dark" (click)="this.onChange.emit()">Вся техника</button>
-        <button type="submit" class="btn btn--sm btn--next" (click)="goToStep(FormStep.TWO)">Дальше</button>
+        <button type="button" class="btn btn--sm btn--prev btn--dark u-hide-sm" (click)="this.onChange.emit()">Вся техника</button>
+        <button type="submit" class="btn btn--sm btn--next u-mgl-auto" (click)="goToStep(FormStep.TWO)">Дальше</button>
       </div>
     </div>
     <ng-template #empty>

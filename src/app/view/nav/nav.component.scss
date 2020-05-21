@@ -12,7 +12,7 @@
 
  &-logo {
    position: relative;
-   top: -2px;
+   top: 0;
    font-family: $font-family;
    font-size: 18px;
    line-height: 21px;
@@ -20,7 +20,7 @@
    text-decoration: none;
 
    ::ng-deep svg {
-     width: 45px;
+     width: 40px;
      fill: $yellow;
    }
  }
