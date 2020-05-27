@@ -1,19 +1,19 @@
 const functions = require('firebase-functions');
 const admin = require("firebase-admin")
 const nodemailer = require('nodemailer');
-const gmailEmail = functions.config().gmail.email;
-const gmailPassword = functions.config().gmail.password;
+const mailEmail = functions.config().mail.email;
+const mailPassword = functions.config().mail.password;
 
 admin.initializeApp()
 
 //google account credentials used to send email
 var transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
+  host: 'smtp.yandex.ru',
   port: 465,
   secure: true,
   auth: {
-    user: gmailEmail,
-    pass: gmailPassword
+    user: mailEmail,
+    pass: mailPassword
   }
 });
 
@@ -162,8 +162,8 @@ exports.sendEmail = functions
     const data = snap.data();
 
     const mailOptions = {
-      from: `${gmailEmail}`,
-      to: `${gmailEmail}`,
+      from: `${mailEmail}`,
+      to: `${mailEmail}`,
       subject: `Заявка на услугу '${data.serviceTitle.split('&').join(' ') || data.serviceTitle}'`,
       html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -200,8 +200,8 @@ exports.sendTransportEmail = functions
     const data = snap.data();
 
     const mailOptions = {
-      from: `${gmailEmail}`,
-      to: `${gmailEmail}`,
+      from: `${mailEmail}`,
+      to: `${mailEmail}`,
       subject: `Заявка на аренду ${TransportMap[data.transport]}`,
       html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -237,8 +237,8 @@ exports.sendMaterialsEmail = functions
     const data = snap.data();
 
     const mailOptions = {
-      from: `${gmailEmail}`,
-      to: `${gmailEmail}`,
+      from: `${mailEmail}`,
+      to: `${mailEmail}`,
       subject: `Заявка на покупку ${Offer[data.offer]}`,
       html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
