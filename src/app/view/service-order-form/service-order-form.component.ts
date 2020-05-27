@@ -147,7 +147,7 @@ export class ServiceOrderFormComponent implements OnInit {
 
     this.formSubmitState = this.SubmitState.SENDING;
 
-    this.af.collection('messages').add(formData)
+    this.af.collection('services-email').add(formData)
       .then((result) => {
         if (result) {
           this.formSubmitState = this.SubmitState.SUCCESS;

@@ -156,7 +156,7 @@ const renderSaleData = function(data) {
 exports.sendEmail = functions
   .region('asia-northeast1')
   .firestore
-  .document('messages/{messageId}')
+  .document('services-email/{emailId}')
   .onCreate((snap, context) => {
 
     const data = snap.data();
