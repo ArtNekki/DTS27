@@ -14,10 +14,16 @@
    position: relative;
    top: 0;
    font-family: $font-family;
-   font-size: 18px;
-   line-height: 21px;
-   color: $white;
+   font-size: 23px;
+   font-weight: 700;
+   line-height: 26px;
+   color: $gray-dark;
    text-decoration: none;
+   //letter-spacing: -1px;
+
+   &:hover {
+     opacity: 0.8;
+   }
 
    ::ng-deep svg {
      width: 40px;
