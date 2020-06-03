@@ -26,8 +26,12 @@
    }
 
    ::ng-deep svg {
-     width: 40px;
-     fill: $yellow;
+     width: 60px;
+     fill: $gray-dark;
+
+     //.nav--sticky & {
+     //  fill: $yellow;
+     //}
    }
  }
 
