@@ -28,9 +28,9 @@
   ],
   "dataGroups": [
     {
-      "name": "firebase-dts27",
+      "name": "firebase-dts-rent",
       "urls": [
-        "https://dts27-ef353.firebaseio.com/**"
+        "https://dts-rent.firebaseio.com/**"
       ],
       "cacheConfig": {
         "maxSize": 5,

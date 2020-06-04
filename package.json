@@ -30,6 +30,7 @@
     "ngx-device-detector": "^1.4.2",
     "ngx-mask": "^9.0.1",
     "ngx-swiper-wrapper": "^9.0.1",
+    "nodemailer": "^6.4.8",
     "rxjs": "~6.5.4",
     "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^5.3.6",
