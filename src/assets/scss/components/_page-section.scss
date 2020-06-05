@@ -2,7 +2,11 @@
 
 .page-section {
   margin-bottom: 10px;
-  padding-top: 90px;
+  padding-top: 70px;
+
+  @include media-breakpoint-up(md) {
+    padding-top: 90px;
+  }
 
   &--transport {
     //margin-top: 95px;

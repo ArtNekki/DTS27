@@ -5,7 +5,7 @@
 
 .page-header {
   position: relative;
-  padding-bottom: 165px;
+  padding-bottom: 135px;
   width: 100%;
   overflow: hidden;
 
@@ -20,7 +20,7 @@
     top: -207px;
     left: -50px;
     right: -113px;
-    height: 773px;
+    height: 730px;
     background-color: #efcd4f;
     background-image: linear-gradient(-25deg, #efcd4f 20%, #f5da77);
     //background-image: url("src/assets/img/bg/texture.jpg");
@@ -126,7 +126,7 @@
   }
 
   &-heading h1 {
-    margin-top: 40px;
+    margin-top: 0;
     font-size: 35px;
     line-height: 40px;
     color: $white;
@@ -134,18 +134,15 @@
     text-transform: uppercase;
 
     @include media-breakpoint-up(sm) {
+      margin-top: 20px;
       font-size: 55px;
       line-height: 60px;
       text-align: left;
     }
 
-    //@include media-breakpoint-up(lg) {
-    //  margin-top: 20px;
-    //  font-size: 55px;
-    //  line-height: 60px;
-    //  color: $white;
-    //  text-transform: uppercase;
-    //}
+    @include media-breakpoint-up(lg) {
+      margin-top: 40px;
+    }
   }
 
   &-heading small {
@@ -238,7 +235,7 @@
 
   &-footer {
     position: absolute;
-    bottom: -150px;
+    bottom: -120px;
     left: 20px;
     right: 20px;
 
