@@ -14,6 +14,7 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 import {HttpClientModule} from '@angular/common/http';
 import {HammerConfig} from './hammer.config';
 import { PageHeaderComponent } from './view/page-header/page-header.component';
+import { MetrikaModule } from 'ng-yandex-metrika';
 
 // mask
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -126,7 +127,10 @@ registerLocaleData(ruLocale, 'ru');
       libraries: ['places']
     }),
     AngularMyDatePickerModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MetrikaModule.forRoot(
+      {id: 64648978, webvisor: true}, // CounterConfig | CounterConfig[]
+    ),
   ],
   providers: [
     {
